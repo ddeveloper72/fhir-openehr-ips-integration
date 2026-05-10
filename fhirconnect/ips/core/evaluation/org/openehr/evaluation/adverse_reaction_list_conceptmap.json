@@ -1,0 +1,203 @@
+{
+  "resourceType": "ConceptMap",
+  "id": "e1a90f56-4773-44a6-8004-0ef178ce85a8",
+  "url": "http://hl7.org/fhir/ConceptMap/adverse-reaction_list-fhirconnect",
+  "description": "Adverse Reaction List Mappings",
+  "group": [
+    {
+      "source": "local",
+      "target": "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical",
+      "element": [
+        {
+          "code": "at0131",
+          "target": [
+            {
+              "code": "active",
+              "display": "Active",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "at0132",
+          "target": [
+            {
+              "code": "inactive",
+              "display": "Inactive",
+              "equivalence": "equivalent"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "target": "local",
+      "source": "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical",
+      "element": [
+        {
+          "code": "active",
+          "target": [
+            {
+              "code": "at0131",
+              "display": "Active",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "inactive",
+          "target": [
+            {
+              "code": "at0132",
+              "display": "Inactive",
+              "equivalence": "equivalent"
+            }
+          ]
+        }
+      ]
+    },
+
+
+    {
+      "source": "local",
+      "target": "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification",
+      "element": [
+        {
+          "code": "at0064",
+          "target": [
+            {
+              "code": "unconfirmed",
+              "display": "Unconfirmed",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "at0065",
+          "target": [
+            {
+              "code": "confirmed",
+              "display": "Confirmed",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "at0066",
+          "target": [
+            {
+              "code": "refuted",
+              "display": "Refuted",
+              "equivalence": "equivalent"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "target": "local",
+      "source": "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification",
+      "element": [
+        {
+          "code": "unconfirmed",
+          "target": [
+            {
+              "code": "at0064",
+              "display": "Active",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "confirmed",
+          "target": [
+            {
+              "code": "at0065",
+              "display": "Inactive",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "refuted",
+          "target": [
+            {
+              "code": "at0066",
+              "display": "Inactive",
+              "equivalence": "equivalent"
+            }
+          ]
+        }
+      ]
+    },
+
+
+    {
+      "source": "local",
+      "element": [
+        {
+          "code": "at0102",
+          "target": [
+            {
+              "code": "low",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "at0103",
+          "target": [
+            {
+              "code": "high",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "at0124",
+          "target": [
+            {
+              "code": "unable-to-assess",
+              "equivalence": "equivalent"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "target": "local",
+      "element": [
+        {
+          "code": "low",
+          "target": [
+            {
+              "code": "at0102",
+              "display": "Low",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "high",
+          "target": [
+            {
+              "code": "at0103",
+              "display": "High",
+              "equivalence": "equivalent"
+            }
+          ]
+        },
+        {
+          "code": "unable-to-assess",
+          "target": [
+            {
+              "code": "at0124",
+              "display": "indeterminate",
+              "equivalence": "equivalent"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
