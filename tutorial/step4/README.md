@@ -14,16 +14,25 @@ where openFHIR actually lives.
 To do that, add OpenFhir.BaseUrl in Firely Server's `appsettings.json`. Alternatively, if you've decided to integrate
 with a sanbox instance of openFHIR, configure OAuth2 properties.
 
+For local openFHIR (Step 3):
+
 ```json
 "OpenFhir": {
-"BaseUrl": "https://sandbox.open-fhir.com",
-// Below is relevantuf using sandbox
-"OAuth2": {
-"TokenUrl": "https://sandbox.open-fhir.com/auth/realms/open-fhir/protocol/openid-connect/token",
-"ClientId": "",
-"ClientSecret": "",
-"Scope": ""
+  "BaseUrl": "http://openfhir:8080"
 }
+```
+
+Alternatively, if using the sandbox instead of a local instance:
+
+```json
+"OpenFhir": {
+  "BaseUrl": "https://sandbox.open-fhir.com",
+  "OAuth2": {
+    "TokenUrl": "https://sandbox.open-fhir.com/auth/realms/open-fhir/protocol/openid-connect/token",
+    "ClientId": "<your-client-id>",
+    "ClientSecret": "<your-client-secret>",
+    "Scope": ""
+  }
 }
 ```
 

@@ -1,8 +1,9 @@
 # Step 3: Install openFHIR
 
-By this point, we have a local Firely Server set up as a facade and able to communicate both with openEHR CDR as well as with openFHIR.
+By this point, we have a local Firely Server running with the openFHIR plugin loaded. The plugin is capable of
+integrating with an openEHR CDR and with openFHIR, but those connections are not wired up yet — that happens in Step 4.
 
-What we're missing now is a local instance of openFHIR.
+What we need first is a local instance of openFHIR to connect to.
 
 ## Installing openFHIR
 

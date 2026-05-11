@@ -77,7 +77,14 @@ appsettings.json:
 
 ## Assertion of the Step 2
 
-After restarting Firely Server, you look for the following in Firely Server log output. TODO
+After restarting Firely Server (`docker compose up -d --force-recreate firely`), check the container logs:
 
-Feel free to compare your appsettings.json and docker-compose.yml with those in this step2 subdirectory. They should
-more or less align after completion of this step.
+```bash
+docker compose logs firely | grep -i "OpenFhir"
+```
+
+You should see a line indicating that the `OpenFhirFirelyPlugin` was loaded. If you see an error about a missing
+assembly, verify that both `.dll` files are present in `.plugins/` and that the volume mount path is correct.
+
+Feel free to compare your `appsettings.json` and `docker-compose.yml` with those in this step2 subdirectory. They
+should more or less align after completion of this step.

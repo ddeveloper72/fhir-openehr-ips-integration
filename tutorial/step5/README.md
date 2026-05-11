@@ -11,7 +11,7 @@ is mount this subdirectory to the configured bootstrap location ot our openFHIR 
 Engine will scan this directory and provision all FHIRConnect mappings in there. Add the following under `volumes`
 
 ```yaml
-  - .../../fhirconnect/:/app/bootstrap/
+  - ./../../fhirconnect/:/app/bootstrap/
 ```
 
 and restart the engine. You should see in the startup log that these files are being provisioned.

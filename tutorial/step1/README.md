@@ -68,9 +68,11 @@ configure persistence parameters, see [appsettings.json](appsettings.json)
     ports:
       - "4080:4080"
     volumes:
-      - ./.secret/firely-license.json:/app/firely-license.json
+      - ./../../.secret/firely-license.json:/app/firely-license.json
       - ./appsettings.json:/app/appsettings.json:ro
-      - ./logsettings.json:/app/logsettings.json:ro
+    depends_on:
+      mongodb:
+        condition: service_healthy
  ```
 
 ## Assertion of the Step 1
