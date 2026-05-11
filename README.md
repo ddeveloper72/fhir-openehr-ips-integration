@@ -1,4 +1,4 @@
-# converge-and-collaborate-dublin-hackaton
+# HL7, openEHR: Converge & Collaborate, Let's Build Session
 
 Let's build resources for Converge and Collaborate, Dublin 2026
 
