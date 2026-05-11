@@ -8,7 +8,7 @@ This session walks through building a working FHIR facade on top of an openEHR C
 Summary (IPS) as the target use case.
 
 The facade sits between FHIR clients and an openEHR CDR, translating FHIR requests into AQL queries and openEHR
-compositions into FHIR resources on the fly, using [FHIRConnect](https://github.com/openFHIR/fhirconnect-spec) mappings
+compositions into FHIR resources on the fly, using [FHIRConnect](https://github.com/SevKohler/FHIRconnect-spec) mappings
 as the translation layer.
 
 ### Target Architecture
@@ -53,5 +53,5 @@ tutorial/step*/     — Step-by-step instructions, docker-compose.yml, and confi
 
 - [openFHIR Firely Plugin](https://github.com/openFHIR/openfhir-firely-plugin)
 - [openFHIR Enterprise documentation](https://open-fhir.com/documentation/2.2.0/installation.html)
-- [FHIRConnect specification](https://github.com/openFHIR/fhirconnect-spec)
+- [FHIRConnect specification](https://github.com/SevKohler/FHIRconnect-spec)
 - [IPS Implementation Guide](https://hl7.org/fhir/uv/ips/)
