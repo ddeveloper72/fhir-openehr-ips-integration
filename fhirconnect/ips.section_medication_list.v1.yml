@@ -12,18 +12,18 @@ spec:
     structureDefinition: http://hl7.org/fhir/StructureDefinition/BackboneElement
 
 mappings:
-#  - name: "entry"
-#    with:
-#      fhir: "entry"
-#      openehr: "$reference/items[openEHR-EHR-EVALUATION.problem_diagnosis.v1]"
-#    reference:
-#      resourceType: "Condition"
-#      mappings:
-#        - name: "problemDiagnosis"
-#          with:
-#            fhir: "$fhirRoot"
-#            openehr: "$archetype/items[openEHR-EHR-EVALUATION.problem_diagnosis.v1]"
-#          slotArchetype: "EVALUATION.problem_diagnosis.v1"
+  #  - name: "entry"
+  #    with:
+  #      fhir: "entry"
+  #      openehr: "$reference/items[...]"
+  #    reference:
+  #      resourceType: "Condition"
+  #      mappings:
+  #        - name: "problemDiagnosis"
+  #          with:
+  #            fhir: "$fhirRoot"
+  #            openehr: "$archetype/items[...]"
+  #          slotArchetype: "..."
   - name: "title"
     with:
       fhir: "$fhirRoot"
