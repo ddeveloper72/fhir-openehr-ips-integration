@@ -6,15 +6,17 @@ Download an evaluation license from Firely website: Request a trial license at h
 
 You'll receive it in a mail in a minute or two and it is a prerequisite for our next step.
 
-Once you have it, place it in a .secret subfolder of this workspace (root, not step1 folder).
+Once you have it, place it in the `config/` folder inside `tutorial/workspace/` and name it
+`firely-license.json`. This folder will also hold `appsettings.instance.json` and other config files as the tutorial progresses.
 
 ## Docker compose
 
-Throughout this tutorial you will maintain a single `docker-compose.yml` file in the **root of this repository** (not
-inside any step folder). Each step adds services or config to that file. The `docker-compose.yml` inside each step
-folder is a reference snapshot showing what yours should look like at the end of that step.
+Throughout this tutorial you will maintain a single `docker-compose.yml` file in the **`tutorial/workspace/`** directory of
+this repository. Each step adds services or config to that file. The `docker-compose.yml` inside each step folder is
+a reference snapshot showing what yours should look like at the end of that step.
 
-All `docker compose` commands should be run from the **repo root**.
+All `docker compose` commands should be run from the **`tutorial/workspace/`** directory. See [workspace/README.md](../workspace/README.md)
+for an overview of the expected folder structure.
 
 The [docker-compose.yml](docker-compose.yml) you see in the step1 folder is what your docker-compose should contain at
 the end of this step.
@@ -38,7 +40,7 @@ Add the following container in your docker compose file
     volumes:
       - mongodb-data:/data/db
     healthcheck:
-      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      test: [ "CMD", "mongosh", "--eval", "db.adminCommand('ping')" ]
       interval: 5s
       timeout: 5s
       retries: 10
@@ -46,13 +48,13 @@ Add the following container in your docker compose file
 
 ### Firely Server
 
-Now we can set up our Firely Server. For this to work, we require 2 additional files:  
-(1) appsettings.json  
-(2) a trial Firely Server License
+Now we can set up our Firely Server. For this to work, we require 2 files in the `config/` folder inside `tutorial/workspace/`:
+(1) `appsettings.instance.json` 
+(2) `firely-license.json` — your trial license from above
 
 #### appsettings
 
-configure persistence parameters, see [appsettings.json](appsettings.json)
+Create it with sections below and place it in the `config/` folder. You can compare it with the reference [appsettings.instance.json](appsettings.instance.json) in this step folder.
 
 ```yaml
 "Repository": "MongoDb",
@@ -76,24 +78,37 @@ configure persistence parameters, see [appsettings.json](appsettings.json)
     image: firely/server:6.7.0
     ports:
       - "4080:4080"
+    environment:
+      - VONK_PATH_TO_SETTINGS=/app/config
     volumes:
-      - ./../../.secret/firelyserver-license.json:/app/firely-license.json
-      - ./appsettings.json:/app/appsettings.json:ro
+      - ./config:/app/config
       - vonk-imported:/app/vonk-imported
     depends_on:
       mongodb:
         condition: service_healthy
  ```
 
-The `vonk-imported` named volume persists Firely Server's conformance resource import history across container
-recreations. Without it, Firely re-imports all conformance resources on every restart, adding ~5 minutes to startup.
-Add it to the `volumes` section at the bottom of your compose file:
+The entire `config/` folder is mounted to `/app/config/` inside the container. `VONK_PATH_TO_SETTINGS` points Firely
+at that directory, where it looks for `appsettings.instance.json` — this avoids the Windows Docker issue of
+bind-mounting individual files. The provided `appsettings.instance.json` already references the license at
+`/app/config/firely-license.json`.
 
-```yaml
-volumes:
-  mongodb-data:
-  vonk-imported:
+The `./vonk-imported` bind mount persists Firely Server's conformance resource import history across container
+recreations. Without it, Firely re-imports all conformance resources on every restart, adding ~5 minutes to startup.
+
+Create the `vonk-imported/` directory inside `tutorial/workspace/` before starting the stack so that it has the correct permissions.
+
+**Linux / macOS:**
+```bash
+mkdir -p vonk-imported && chmod 777 vonk-imported
 ```
+
+**Windows (PowerShell):**
+```powershell
+New-Item -ItemType Directory -Force -Path vonk-imported
+```
+
+Run these from the `tutorial/workspace/` directory.
 
 ## Assertion of the Step 1
 
@@ -105,7 +120,7 @@ an OpeartionOutcome with 423 Locked, feel free to move on to Step 2 and revisit 
 
 Additionally, you're welcome to compare your docker-compose.yml file with [docker-compose.yml](docker-compose.yml).
 
-Run all commands from the repo root:
+Run from the `tutorial/workspace/` directory:
 
 ```bash
 docker compose up -d

@@ -11,8 +11,9 @@ In step2, we have enabled a plugin in Firely Server that can seamlessly integrat
 do is tell that plugin
 where openFHIR actually lives.
 
-To do that, add OpenFhir.BaseUrl in Firely Server's `appsettings.json`. Alternatively, if you've decided to integrate
-with a sanbox instance of openFHIR, configure OAuth2 properties.
+To do that, add OpenFhir.BaseUrl in Firely Server's `appsettings.instance.json`. Alternatively, if you've decided to
+integrate
+with a sandbox instance of openFHIR, configure OAuth2 properties.
 
 For local openFHIR (Step 3):
 
@@ -34,8 +35,7 @@ Alternatively, if using the sandbox instead of a local instance:
 "OAuth2": {
 "TokenUrl": "https://sandbox.open-fhir.com/auth/realms/open-fhir/protocol/openid-connect/token",
 "ClientId": "<your-client-id>",
-"ClientSecret": "<your-client-secret>",
-"Scope": ""
+"ClientSecret": "<your-client-secret>"
 }
 }
 }
@@ -46,7 +46,7 @@ Alternatively, if using the sandbox instead of a local instance:
 Now we need to tell our openFHIR Firely Plugin where openEHR CDR actually lives and based on what it should decide how
 to route calls to it's local FHIR store or to an openEHR CDR.
 
-To do that, we need the following configuration sections:
+To do that, we need the following configuration sections to Firely's appsettings.instance.json:
 
 `Interceptor` is a configuration property telling our Interceptor where exactly openEHR CDRs live and how it can connect
 to them.
@@ -73,13 +73,9 @@ Example of cdrs.yml as follows:
     password: SuperSecretPassword
 ```
 
-Copy [cdrs.yml](cdrs.yml) to the repo root and fill in the CDR URL provided on the day. Then add the volume mount
-to the `firely` service in your root `docker-compose.yml`:
-
-```yaml
-volumes:
-  - ./cdrs.yml:/app/cdrs.yml:ro
-```
+Copy [cdrs.yml](cdrs.yml) to your `config/` folder and fill in the CDR URL provided on the day. It will be
+available inside the container at `/app/config/cdrs.yml`, which matches the `CdrsConfigFile` value already set in
+`appsettings.instance.json`.
 
 ### Filters
 
@@ -91,12 +87,12 @@ an openEHR flow of data.
 
 ### Applying plugin configuration for openEHR CDRs
 
-The following goes to appsettings.json. Be aware of the root key being OpenFhirPlugin
+The following goes to appsettings.instance.json. Be aware of the root key being OpenFhirPlugin
 
 ```yaml
 "OpenFhirPlugin": {
   "Interceptor": {
-    "CdrsConfigFile": "/app/cdrs.yml",
+    "CdrsConfigFile": "/app/config/cdrs.yml",
 
                    // Profiles that trigger the OpenEHR store flow (FhirCreateMiddleware).
                    // Any POST whose resource meta.profile matches one of these URLs is forwarded to the CDR.
@@ -134,7 +130,7 @@ The following goes to appsettings.json. Be aware of the root key being OpenFhirP
 ## $summary operation
 
 Firely Server requires one additional configuration to enable the `$summary` operation, for which you need to add the
-following to appsettings.json (under base appsettings.json)
+following to appsettings.instance.json (under base appsettings.instance.json)
 
 ```yaml
 "Operations": {
@@ -153,25 +149,19 @@ actual business logic/implementation of this operation is provided by openFHIR F
 ## Additional logging
 
 To be able to debug if something is going wrong (or right), it may be a good idea to add additional logging output to
-our Firely Server instance. For this, mount logsettings.json as you can find it in step4 subfolder inside docker
-container like so:
-
-```yaml
-volumes:
-  - ./logsettings.json:/app/logsettings.json:ro
-```
+our Firely Server instance. Copy [logsettings.json](logsettings.json) to your `config/` folder — Firely will pick it
+up automatically from the same directory as `appsettings.instance.json`.
 
 ## Assertion of the Step 4
 
-After updating `appsettings.json` and `docker-compose.yml`, recreate Firely Server container
+After updating `appsettings.instance.json` and `docker-compose.yml`, restart Firely Server container
 
 ```bash
-docker compose up -d firely
+docker compose restart firely
 ```
 
 Verify your files match those in the step4 subfolder of this tutorial.
 
 Additionally, test `$summary` on a random (can be non-existent) patient, just to verify operation is permitted and
-enabled. If you get a "Not Implemented" response, it means that something has gone wrong.
-
-If you get a 200, check the logs and you should see some openFHIR Plugin business logic logs.
+enabled. If you get a "Not Implemented" response, it means that something has gone wrong. If you get a
+`No EHR ID found for patient .. on CDR 'local'` error, it means you are where you want to be. We'll fix this error in step 6.

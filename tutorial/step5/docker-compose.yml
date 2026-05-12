@@ -3,12 +3,12 @@ services:
     image: firely/server:6.7.0
     ports:
       - "4080:4080"
+    environment:
+      - VONK_PATH_TO_SETTINGS=/app/config
     volumes:
-      - ./../../.secret/firelyserver-license.json:/app/firely-license.json
-      - ./appsettings.json:/app/appsettings.json:ro
-      - ./cdrs.yml:/app/cdrs.yml:ro
-      - ./../../.plugins:/app/plugins:ro
-      - vonk-imported:/app/vonk-imported
+      - ./config:/app/config
+      - ./.plugins:/app/plugins:ro
+      - ./vonk-imported:/app/vonk-imported
     depends_on:
       mongodb:
         condition: service_healthy
@@ -46,4 +46,3 @@ services:
 
 volumes:
   mongodb-data:
-  vonk-imported:

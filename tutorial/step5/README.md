@@ -3,6 +3,8 @@
 In this step, we'll provision existing IPS FHIRConnect mappings to our openFHIR setup. This can be done in two ways, either
 by bootstrapping them or by provisioning them through a RESTful API (https://open-fhir.com/documentation/2.2.0/stateconfiguration.html).
 
+> If you've decided to use sandbox openFHIR instance, you can only do this step via a RESTful API.
+
 ## Bootstrapping openFHIR State
 
 [fhirconnect](../../fhirconnect) subdirectory already includes all existing IPS mappings. The only thing we need to do
@@ -14,7 +16,7 @@ Engine will scan this directory and provision all FHIRConnect mappings in there.
   - ./../../fhirconnect/:/app/bootstrap/
 ```
 
-then recreate the openFHIR container from the **repo root**, so it picks up the new volume mount and restarts the engine:
+then recreate the openFHIR container from the **`tutorial/workspace/` directory**, so it picks up the new volume mount and restarts the engine:
 
 ```bash
 docker compose up -d openfhir

@@ -10,19 +10,19 @@ this session, you can find the .dll files in this project as well.
 
 ## Installing the plugin
 
-Create a `.plugins` subfolder in the root of this workspace (not step2, but root) and copy two .dll files found in step2
-there ([OpenFhirFirelyPlugin.dll](OpenFhirFirelyPlugin.dll), [YamlDotNet.dll](YamlDotNet.dll)).
+The `.plugins` folder inside `tutorial/workspace/` already contains the two required DLL files
+([OpenFhirFirelyPlugin.dll](OpenFhirFirelyPlugin.dll), [YamlDotNet.dll](YamlDotNet.dll)) — no copying needed.
 
-Now we need to make sure Firely Server picks them up, so we need to make them available from
-within our docker container. Mount `.plugins` folder to `/app/plugins` inside docker:
+We need to make sure Firely Server picks them up by mounting the `.plugins` folder into the container.
+Add the following under the `firely` service's `volumes` in your `docker-compose.yml`:
 
 ```yaml
 volumes:
-  - ./../../.plugins:/app/plugins:ro
+  - ./.plugins:/app/plugins:ro
 ```
 
-And last thing is to enable this plugin in `appsettings.json` of FirelyServer. For this, add the following section in
-appsettings.json:
+And last thing is to enable this plugin in `appsettings.instance.json` of FirelyServer. For this, add the following section in
+appsettings.instance.json:
 
 (notice `OpenFhirFirelyPlugin` at the bottom of the `Include`, this enables our plugin)
 
@@ -77,20 +77,31 @@ appsettings.json:
 
 ## Assertion of the Step 2
 
-After applying the changes, restart Firely Server from the **repo root**:
+After applying the changes, restart Firely Server from the **`tutorial/workspace/` directory**:
 
 ```bash
-docker compose restart firely
+docker compose up firely --force-recreate
 ```
 
 Check the container logs:
 
+**Linux / macOS:**
 ```bash
 docker compose logs firely | grep -i "OpenFhir"
 ```
 
-You should see a line indicating that the `OpenFhirFirelyPlugin` was loaded. If you see an error about a missing
-assembly, verify that both `.dll` files are present in `.plugins/` and that the volume mount path is correct.
+**Windows (PowerShell):**
+```powershell
+docker compose logs firely | Select-String "OpenFhir"
+```
 
-Feel free to compare your `appsettings.json` and `docker-compose.yml` with those in this step2 subdirectory. They
+**Windows (Command Prompt):**
+```cmd
+docker compose logs firely | findstr /i "OpenFhir"
+```
+
+You should see a line indicating that the `OpenFhirFirelyPlugin` was loaded. If you see an error about a missing
+assembly, verify that both `.dll` files are present in `tutorial/workspace/.plugins/` and that the volume mount path is correct.
+
+Feel free to compare your `appsettings.instance.json` and `docker-compose.yml` with those in this step2 subdirectory. They
 should more or less align after completion of this step.

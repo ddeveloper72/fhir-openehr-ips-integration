@@ -71,7 +71,7 @@ Use `ips.problem_diagnosis.v1.yml` as a structural reference for the entry-level
 
 ## Reload and Verify
 
-Restart the openFHIR container from the **repo root** to bootstrap the new mappings:
+Restart the openFHIR container from the **`tutorial/workspace/` directory** to bootstrap the new mappings:
 
 ```bash
 docker compose restart openfhir

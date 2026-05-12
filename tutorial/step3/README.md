@@ -11,7 +11,7 @@ What we need first is a local instance of openFHIR to connect to.
 
 openFHIR can be run locally as a docker container and leverage existing MongoDB we've already setup for Firely Server to store mappings.
 
-Add the section below to your `docker-compose.yml` in the **repo root**, then run `docker compose up -d` from there.
+Add the section below to your `docker-compose.yml` in the **`tutorial/workspace/` directory**, then run `docker compose up -d` from there.
 This will start openFHIR alongside the already-running services without recreating them.
 
 ```yaml
@@ -36,4 +36,4 @@ In your preferred RESTful API testing tool (i.e. Postman, Bruno) or simply in a 
 Additionally, feel free to compare your docker compose with that inside this step3 subfolder.
 
 # Step 3.alt: Using Sandbox
-If you'd rather use a sanbdox instance of openFHIR Enterprise, please visit https://sandbox.open-fhir.com and create an account.
+If you'd rather use a sanbdox instance of openFHIR Enterprise, please visit https://sandbox.open-fhir.com/atlas and create an account. Logging in to the atlas and going to "API Access" section will give you credentials we'll configure in step 4.
