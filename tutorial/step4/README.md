@@ -150,7 +150,7 @@ actual business logic/implementation of this operation is provided by openFHIR F
 ## Additional logging
 
 To be able to debug if something is going wrong (or right), it may be a good idea to add additional logging output to
-our Firely Server instance. Copy [logsettings.json](logsettings.json) to your `config/` folder — Firely will pick it
+our Firely Server instance. Copy [logsettings.instance.json](logsettings.instance.json) to your `config/` folder — Firely will pick it
 up automatically from the same directory as `appsettings.instance.json`.
 
 ## Assertion of the Step 4
