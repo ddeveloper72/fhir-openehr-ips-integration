@@ -50,6 +50,16 @@ docker compose logs -f
 - **OpenFHIR**: http://localhost:8083
 - **MongoDB**: localhost:27017
 
+### 5. Server Status Monitoring
+
+The UI Dashboard includes **automatic server status checking**:
+
+- **Green Banner**: Firely server is operational and ready
+- **Blue Banner**: Server is initializing (loading conformance resources, ~3-5 minutes)
+- **Red Banner**: Server unavailable or license issue - includes detailed setup instructions
+
+The banner auto-refreshes every 30 seconds when issues are detected, so you'll know immediately when the server is ready or if action is needed.
+
 ## UI Development
 
 ### Local Development
