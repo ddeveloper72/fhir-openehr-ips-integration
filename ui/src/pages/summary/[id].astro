@@ -11,8 +11,10 @@ let patient = null;
 let error = null;
 
 try {
-  // Use internal Docker network URL for SSR, falls back to localhost for local dev
-  const FHIR_API_URL = import.meta.env.FHIR_API_URL || import.meta.env.PUBLIC_FHIR_API_URL || 'http://localhost:4080';
+  // Use internal Docker network URL for SSR (process.env works at runtime)
+  // Falls back to PUBLIC_FHIR_API_URL for client-side or local dev
+  const FHIR_API_URL = process.env.FHIR_API_URL || import.meta.env.PUBLIC_FHIR_API_URL || 'http://localhost:4080';
+  console.log('[SSR] Fetching summary from:', FHIR_API_URL, 'ID:', id);
   
   // Fetch patient summary
   const summaryResponse = await fetch(`${FHIR_API_URL}/Patient/${id}/$summary`, {
