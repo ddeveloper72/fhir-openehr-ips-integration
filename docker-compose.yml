@@ -52,6 +52,7 @@ services:
       - "3000:3000"
     environment:
       - PUBLIC_FHIR_API_URL=http://localhost:4080
+      - FHIR_API_URL=http://firely:4080
       - PUBLIC_APP_NAME=FHIR-openEHR Integration
       - PUBLIC_APP_VERSION=1.0.0
       - DOCKER_HOST=unix:///var/run/docker.sock

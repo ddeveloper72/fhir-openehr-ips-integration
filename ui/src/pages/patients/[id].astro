@@ -10,7 +10,8 @@ let patient = null;
 let error = null;
 
 try {
-  const FHIR_API_URL = import.meta.env.PUBLIC_FHIR_API_URL || 'http://localhost:4080';
+  // Use internal Docker network URL for SSR, falls back to localhost for local dev
+  const FHIR_API_URL = import.meta.env.FHIR_API_URL || import.meta.env.PUBLIC_FHIR_API_URL || 'http://localhost:4080';
   const response = await fetch(`${FHIR_API_URL}/Patient/${id}`, {
     headers: {
       'Accept': 'application/fhir+json',
