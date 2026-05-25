@@ -1,0 +1,102 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+
+const { id } = Astro.params;
+
+// Server-side data fetching
+let summary = null;
+let patient = null;
+let error = null;
+
+try {
+  const FHIR_API_URL = import.meta.env.PUBLIC_FHIR_API_URL || 'http://localhost:4080';
+  
+  // Fetch patient summary
+  const summaryResponse = await fetch(`${FHIR_API_URL}/Patient/${id}/$summary`, {
+    headers: {
+      'Accept': 'application/fhir+json',
+    },
+  });
+
+  if (!summaryResponse.ok) {
+    throw new Error(`Failed to fetch summary: ${summaryResponse.statusText}`);
+  }
+
+  summary = await summaryResponse.json();
+
+  // Fetch patient details
+  const patientResponse = await fetch(`${FHIR_API_URL}/Patient/${id}`, {
+    headers: {
+      'Accept': 'application/fhir+json',
+    },
+  });
+
+  if (patientResponse.ok) {
+    patient = await patientResponse.json();
+  }
+} catch (err: any) {
+  error = err.message;
+}
+---
+
+<Layout title={patient ? `Summary: ${patient.name?.[0]?.given?.join(' ')} ${patient.name?.[0]?.family}` : 'Patient Summary'}>
+  <Header slot="header" />
+  
+  <div class="container-custom py-8">
+    {error ? (
+      <div class="bg-error-50 border border-error-200 rounded-lg p-4 text-error-800">
+        <p class="font-semibold">Error loading summary</p>
+        <p class="text-sm mt-1">{error}</p>
+        <a href={`/patients/${id}`} class="text-error-600 hover:text-error-700 text-sm font-medium mt-3 inline-block">
+          ← Back to patient
+        </a>
+      </div>
+    ) : summary && (
+      <div class="space-y-6">
+        {patient && (
+          <div class="flex justify-between items-start">
+            <div>
+              <h1 class="text-3xl font-bold text-slate-900 mb-2">
+                Patient Summary: {patient.name?.[0]?.given?.join(' ')} {patient.name?.[0]?.family}
+              </h1>
+              <p class="text-slate-600">Patient ID: {patient.id}</p>
+            </div>
+          </div>
+        )}
+
+        <div id="summary-viewer-root" data-summary={JSON.stringify(summary)} data-patient-id={id}>
+          <!-- SummaryViewer will be mounted here -->
+        </div>
+
+        <div class="mt-6">
+          <a href={`/patients/${id}`} class="text-primary-600 hover:text-primary-700 text-sm font-medium">
+            ← Back to patient details
+          </a>
+        </div>
+      </div>
+    )}
+  </div>
+
+  <Footer slot="footer" />
+</Layout>
+
+<script>
+  import { createRoot } from 'react-dom/client';
+  import { SummaryViewer } from '@/components/summary/SummaryViewer';
+  import React from 'react';
+
+  // Mount React component
+  const container = document.getElementById('summary-viewer-root');
+  if (container) {
+    const summaryData = container.getAttribute('data-summary');
+    const patientId = container.getAttribute('data-patient-id') || undefined;
+    
+    if (summaryData) {
+      const summary = JSON.parse(summaryData);
+      const root = createRoot(container);
+      root.render(React.createElement(SummaryViewer, { bundle: summary, patientId }));
+    }
+  }
+</script>

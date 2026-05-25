@@ -1,0 +1,5 @@
+﻿# 1. Add all files except ignored ones
+git add .
+
+# 2. Check what will be committed (license should NOT appear)
+git status

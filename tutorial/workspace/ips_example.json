@@ -105,27 +105,6 @@
               "status": "generated",
               "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Hot flushes</div>"
             }
-          },
-          {
-            "title": "Medical Devices",
-            "code": {
-              "coding": [
-                {
-                  "system": "http://loinc.org",
-                  "code": "46264-8",
-                  "display": "History of medical device use"
-                }
-              ]
-            },
-            "text": {
-              "status": "generated",
-              "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Cardiac pacemaker</div>"
-            },
-            "entry": [
-              {
-                "reference": "urn:uuid:a1b2c3d4-e5f6-7890-abcd-ef1234567890"
-              }
-            ]
           }
         ]
       }
@@ -334,69 +313,6 @@
               }
             ],
             "severity": "severe"
-          }
-        ]
-      }
-    },
-    {
-      "fullUrl": "urn:uuid:a1b2c3d4-e5f6-7890-abcd-ef1234567890",
-      "resource": {
-        "resourceType": "DeviceUseStatement",
-        "meta": {
-          "profile": [
-            "http://hl7.org/fhir/uv/ips/StructureDefinition/DeviceUseStatement-uv-ips"
-          ]
-        },
-        "status": "active",
-        "subject": {
-          "reference": "urn:uuid:7038eb40-56b0-450e-8394-ecd58a7a3d30"
-        },
-        "device": {
-          "reference": "urn:uuid:d9e8f7a6-b5c4-3210-fedc-ba9876543210"
-        },
-        "bodySite": {
-          "coding": [
-            {
-              "system": "http://snomed.info/sct",
-              "code": "80891009",
-              "display": "Heart structure"
-            }
-          ],
-          "text": "Heart structure"
-        }
-      }
-    },
-    {
-      "fullUrl": "urn:uuid:d9e8f7a6-b5c4-3210-fedc-ba9876543210",
-      "resource": {
-        "resourceType": "Device",
-        "meta": {
-          "profile": [
-            "http://hl7.org/fhir/uv/ips/StructureDefinition/Device-uv-ips"
-          ]
-        },
-        "deviceName": [
-          {
-            "name": "Cardiac Pacemaker",
-            "type": "user-friendly-name"
-          }
-        ],
-        "type": {
-          "coding": [
-            {
-              "system": "http://snomed.info/sct",
-              "code": "14106009",
-              "display": "Cardiac pacemaker"
-            }
-          ],
-          "text": "Cardiac pacemaker"
-        },
-        "manufacturer": "Medtronic",
-        "serialNumber": "SN-20240501-PMK",
-        "modelNumber": "Micra AV2",
-        "udiCarrier": [
-          {
-            "deviceIdentifier": "00643169007222"
           }
         ]
       }

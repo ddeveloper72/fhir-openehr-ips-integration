@@ -1,0 +1,14 @@
+{
+  "LicenseOptions": {
+    "Kind": "Evaluation",
+    "LicenseVersion": "2",
+    "ValidUntil": "YYYY-MM-DD",
+    "Licensee": "your-email@example.com",
+    "Plugins": [
+      "http://fire.ly/server/edition/firely-scale",
+      "http://fire.ly/vonk/plugins/administration",
+      "...add your licensed plugins here..."
+    ]
+  },
+  "Signature": "YOUR_LICENSE_SIGNATURE_HERE"
+}

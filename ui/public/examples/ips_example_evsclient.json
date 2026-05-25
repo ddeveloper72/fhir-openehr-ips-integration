@@ -1,0 +1,599 @@
+{
+  "resourceType": "Bundle",
+  "id": "17112d63-beff-402d-9dfc-6427c5b1080f",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/uv/ips/StructureDefinition/Bundle-uv-ips"
+    ]
+  },
+  "identifier": {
+    "system": "urn:oid:1.3.6.1.4.1.32536",
+    "value": "51876a76-b822-4a92-bdf3-bc7e881e0b28"
+  },
+  "type": "document",
+  "timestamp": "2026-03-22T19:24:44Z",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:51876a76-b822-4a92-bdf3-bc7e881e0b28",
+      "resource": {
+        "resourceType": "Composition",
+        "id": "51876a76-b822-4a92-bdf3-bc7e881e0b28",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/uv/ips/StructureDefinition/Composition-uv-ips"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><strong>Patient Summary of Villa Marta</strong></p></div>"
+        },
+        "status": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "60591-5",
+              "display": "Patient summary Document"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "https://quadro.lat.ergobyte.ebn:8443/resolve/qd/Y7L3HLBJFFRLMAZSQS73AY45MSRGJXV5MPJSQ4MEXQ/fhir/r4/Patient/847d1e74-29d3-4929-ade1-4fd67bcb91ca"
+        },
+        "date": "2026-03-22T12:52:28Z",
+        "author": [
+          {
+            "reference": "https://quadro.lat.ergobyte.ebn:8443/resolve/qd/Y7L3HLBJFFRLMAZSQS73AY45MSRGJXV5MPJSQ4MEXQ/fhir/r4/Organization/1f103382-2fdb-6a2b-bc93-010000011cae"
+          }
+        ],
+        "title": "Patient Summary of Villa Marta",
+        "section": [
+          {
+            "title": "Medication",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "10160-0",
+                  "display": "History of Medication use Narrative"
+                }
+              ]
+            },
+            "text": {
+              "status": "generated",
+              "div": ""
+            },
+            "emptyReason": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/list-empty-reason",
+                  "code": "unavailable"
+                }
+              ],
+              "text": "No information about medications"
+            }
+          },
+          {
+            "title": "Allergies and Intolerances",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "48765-2",
+                  "display": "Allergies and adverse reactions Document"
+                }
+              ]
+            },
+            "text": {
+              "status": "generated",
+              "div": ""
+            },
+            "entry": [
+              {
+                "reference": "https://quadro.lat.ergobyte.ebn:8443/resolve/qd/Y7L3HLBJFFRLMAZSQS73AY45MSRGJXV5MPJSQ4MEXQ/fhir/r4/AllergyIntolerance/3469614437634148267"
+              },
+              {
+                "reference": "https://quadro.lat.ergobyte.ebn:8443/resolve/qd/Y7L3HLBJFFRLMAZSQS73AY45MSRGJXV5MPJSQ4MEXQ/fhir/r4/AllergyIntolerance/3469617052354873259"
+              }
+            ]
+          },
+          {
+            "title": "Active Problems",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "11450-4",
+                  "display": "Problem list - Reported"
+                }
+              ]
+            },
+            "text": {
+              "status": "generated",
+              "div": ""
+            },
+            "entry": [
+              {
+                "reference": "https://quadro.lat.ergobyte.ebn:8443/resolve/qd/Y7L3HLBJFFRLMAZSQS73AY45MSRGJXV5MPJSQ4MEXQ/fhir/r4/Condition/3469613044110198699"
+              },
+              {
+                "reference": "https://quadro.lat.ergobyte.ebn:8443/resolve/qd/Y7L3HLBJFFRLMAZSQS73AY45MSRGJXV5MPJSQ4MEXQ/fhir/r4/Condition/3469613144391813035"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "https://quadro.lat.ergobyte.ebn:8443/resolve/qd/Y7L3HLBJFFRLMAZSQS73AY45MSRGJXV5MPJSQ4MEXQ/fhir/r4/Patient/847d1e74-29d3-4929-ade1-4fd67bcb91ca",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "847d1e74-29d3-4929-ade1-4fd67bcb91ca",
+        "meta": {
+          "lastUpdated": "2026-03-21T11:21:11Z",
+          "profile": [
+            "https://profiles.ihe.net/ITI/PDQm/StructureDefinition/IHE.PDQm.Patient|3.2.0",
+            "http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.0"
+          ],
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+              "code": "HTEST",
+              "display": "test health data"
+            }
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Villa Marta (♀1993)</div>"
+        },
+        "identifier": [
+          {
+            "use": "usual",
+            "system": "urn:oid:1.3.6.1.4.1.21367.2011.2.5.5689",
+            "value": "847d1e74-29d3-4929-ade1-4fd67bcb91ca"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Villa",
+            "given": [
+              "Marta"
+            ]
+          },
+          {
+            "use": "maiden",
+            "family": "Estrada",
+            "given": [
+              "Marta"
+            ]
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+34 742274539",
+            "use": "mobile"
+          },
+          {
+            "system": "email",
+            "value": "mvilla@example.com",
+            "use": "home"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1993-07-25",
+        "address": [
+          {
+            "use": "home",
+            "type": "postal",
+            "line": [
+              "Pascual Yunquera 31"
+            ],
+            "city": "Freila",
+            "state": "Granada",
+            "postalCode": "18812",
+            "country": "ESP"
+          }
+        ],
+        "maritalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+              "code": "M",
+              "display": "married"
+            }
+          ],
+          "text": "married"
+        },
+        "generalPractitioner": [
+          {
+            "reference": "https://quadro.lat.ergobyte.ebn:8443/resolve/qd/Y7L3HLBJFFRLMAZSQS73AY45MSRGJXV5MPJSQ4MEXQ/fhir/r4/Practitioner/1f1238a8-1bad-65b4-930d-01000001001d",
+            "type": "Practitioner",
+            "display": "Prijs Berend"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "https://quadro.lat.ergobyte.ebn:8443/resolve/qd/Y7L3HLBJFFRLMAZSQS73AY45MSRGJXV5MPJSQ4MEXQ/fhir/r4/Organization/1f103382-2fdb-6a2b-bc93-010000011cae",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "1f103382-2fdb-6a2b-bc93-010000011cae",
+        "meta": {
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+              "code": "HTEST",
+              "display": "test health data"
+            }
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">IHE Europe Connectathon 2026</div>"
+        },
+        "name": "IHE Europe Connectathon 2026",
+        "alias": [
+          "connectathon"
+        ],
+        "address": [
+          {
+            "use": "work",
+            "type": "postal",
+            "line": [
+              "Rue Bara 175"
+            ],
+            "city": "Anderlecht",
+            "state": "Bruxelles",
+            "postalCode": "1070",
+            "country": "BEL"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "https://quadro.lat.ergobyte.ebn:8443/resolve/qd/Y7L3HLBJFFRLMAZSQS73AY45MSRGJXV5MPJSQ4MEXQ/fhir/r4/AllergyIntolerance/3469614437634148267",
+      "resource": {
+        "resourceType": "AllergyIntolerance",
+        "id": "3469614437634148267",
+        "meta": {
+          "lastUpdated": "2026-03-19T13:23:20Z",
+          "profile": [
+            "http://hl7.org/fhir/uv/ips/StructureDefinition/AllergyIntolerance-uv-ips|2.0.0"
+          ],
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+              "code": "HTEST",
+              "display": "test health data"
+            }
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Allergy to adhesive agent</div>"
+        },
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical",
+              "code": "active"
+            }
+          ],
+          "text": "Active (qualifier value)"
+        },
+        "type": "allergy",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "417930000"
+            }
+          ],
+          "text": "Allergy to adhesive agent"
+        },
+        "patient": {
+          "reference": "https://quadro.lat.ergobyte.ebn:8443/resolve/qd/Y7L3HLBJFFRLMAZSQS73AY45MSRGJXV5MPJSQ4MEXQ/fhir/r4/Patient/847d1e74-29d3-4929-ade1-4fd67bcb91ca",
+          "type": "Patient",
+          "display": "Villa Marta (♀1993)"
+        },
+        "onsetDateTime": "2008-03-05T00:00:00+01:00",
+        "recordedDate": "2026-03-19T09:28:30+01:00",
+        "reaction": [
+          {
+            "manifestation": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "418363000"
+                  }
+                ]
+              }
+            ],
+            "severity": "moderate"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "https://quadro.lat.ergobyte.ebn:8443/resolve/qd/Y7L3HLBJFFRLMAZSQS73AY45MSRGJXV5MPJSQ4MEXQ/fhir/r4/AllergyIntolerance/3469617052354873259",
+      "resource": {
+        "resourceType": "AllergyIntolerance",
+        "id": "3469617052354873259",
+        "meta": {
+          "lastUpdated": "2026-03-19T13:23:20Z",
+          "profile": [
+            "http://hl7.org/fhir/uv/ips/StructureDefinition/AllergyIntolerance-uv-ips|2.0.0"
+          ],
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+              "code": "HTEST",
+              "display": "test health data"
+            }
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Allergy to penicillin</div>"
+        },
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical",
+              "code": "active"
+            }
+          ],
+          "text": "Active (qualifier value)"
+        },
+        "type": "allergy",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "91936005"
+            }
+          ],
+          "text": "Allergy to penicillin"
+        },
+        "patient": {
+          "reference": "https://quadro.lat.ergobyte.ebn:8443/resolve/qd/Y7L3HLBJFFRLMAZSQS73AY45MSRGJXV5MPJSQ4MEXQ/fhir/r4/Patient/847d1e74-29d3-4929-ade1-4fd67bcb91ca",
+          "type": "Patient",
+          "display": "Villa Marta (♀1993)"
+        },
+        "onsetDateTime": "1998-06-23T00:00:00+02:00",
+        "recordedDate": "2026-03-19T09:38:52+01:00",
+        "reaction": [
+          {
+            "manifestation": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "39579001"
+                  }
+                ]
+              }
+            ],
+            "severity": "severe"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "https://quadro.lat.ergobyte.ebn:8443/resolve/qd/Y7L3HLBJFFRLMAZSQS73AY45MSRGJXV5MPJSQ4MEXQ/fhir/r4/Condition/3469613044110198699",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "3469613044110198699",
+        "meta": {
+          "lastUpdated": "2026-03-19T07:23:55Z",
+          "profile": [
+            "http://hl7.org/fhir/uv/ips/StructureDefinition/Condition-uv-ips|2.0.0"
+          ],
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+              "code": "HTEST",
+              "display": "test health data"
+            }
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Gestational diabetes mellitus</div>"
+        },
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ],
+          "text": "Active (qualifier value)"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "problem-list-item"
+              }
+            ]
+          }
+        ],
+        "severity": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "6736007",
+              "display": "Moderate (severity modifier) (qualifier value)"
+            }
+          ],
+          "text": "Moderate (severity modifier) (qualifier value)"
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "11687002"
+            }
+          ],
+          "text": "Gestational diabetes mellitus"
+        },
+        "subject": {
+          "reference": "https://quadro.lat.ergobyte.ebn:8443/resolve/qd/Y7L3HLBJFFRLMAZSQS73AY45MSRGJXV5MPJSQ4MEXQ/fhir/r4/Patient/847d1e74-29d3-4929-ade1-4fd67bcb91ca",
+          "type": "Patient",
+          "display": "Villa Marta (♀1993)"
+        },
+        "onsetDateTime": "2025-08-28T00:00:00+02:00",
+        "recordedDate": "2026-03-19T09:22:50+01:00"
+      }
+    },
+    {
+      "fullUrl": "https://quadro.lat.ergobyte.ebn:8443/resolve/qd/Y7L3HLBJFFRLMAZSQS73AY45MSRGJXV5MPJSQ4MEXQ/fhir/r4/Condition/3469613144391813035",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "3469613144391813035",
+        "meta": {
+          "lastUpdated": "2026-03-19T07:29:04Z",
+          "profile": [
+            "http://hl7.org/fhir/uv/ips/StructureDefinition/Condition-uv-ips|2.0.0"
+          ],
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+              "code": "HTEST",
+              "display": "test health data"
+            }
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Anemia</div>"
+        },
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ],
+          "text": "Active (qualifier value)"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "problem-list-item"
+              }
+            ]
+          }
+        ],
+        "severity": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "255604002",
+              "display": "Mild (qualifier value)"
+            }
+          ],
+          "text": "Mild (qualifier value)"
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "271737000"
+            }
+          ],
+          "text": "Anemia"
+        },
+        "subject": {
+          "reference": "https://quadro.lat.ergobyte.ebn:8443/resolve/qd/Y7L3HLBJFFRLMAZSQS73AY45MSRGJXV5MPJSQ4MEXQ/fhir/r4/Patient/847d1e74-29d3-4929-ade1-4fd67bcb91ca",
+          "type": "Patient",
+          "display": "Villa Marta (♀1993)"
+        },
+        "onsetDateTime": "2025-08-28T00:00:00+02:00",
+        "recordedDate": "2026-03-19T09:23:34+01:00"
+      }
+    },
+
+    {
+      "fullUrl": "https://quadro.lat.ergobyte.ebn:8443/resolve/qd/Y7L3HLBJFFRLMAZSQS73AY45MSRGJXV5MPJSQ4MEXQ/fhir/r4/Practitioner/1f1238a8-1bad-65b4-930d-01000001001d",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "1f1238a8-1bad-65b4-930d-01000001001d",
+        "meta": {
+          "lastUpdated": "2026-03-22T16:42:58Z",
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+              "code": "HTEST",
+              "display": "test health data"
+            }
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Prijs Berend</div>"
+        },
+        "name": [
+          {
+            "use": "official",
+            "family": "Prijs",
+            "given": [
+              "Berend"
+            ]
+          }
+        ],
+        "address": [
+          {
+            "use": "home",
+            "type": "postal",
+            "line": [
+              "Papafi 22"
+            ],
+            "city": "Thessaloniki",
+            "state": "Thessaloniki",
+            "postalCode": "546 39",
+            "country": "GRC"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "https://quadro.lat.ergobyte.ebn:8443/resolve/qd/Y7L3HLBJFFRLMAZSQS73AY45MSRGJXV5MPJSQ4MEXQ/fhir/r4/Practitioner/1f1238a7-728c-6534-930d-01000001001d",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "1f1238a7-728c-6534-930d-01000001001d",
+        "meta": {
+          "lastUpdated": "2026-03-20T09:23:12Z",
+          "security": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+              "code": "HTEST",
+              "display": "test health data"
+            }
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Allaire Violette</div>"
+        },
+        "name": [
+          {
+            "use": "official",
+            "family": "Allaire",
+            "given": [
+              "Violette"
+            ]
+          }
+        ]
+      }
+    }]
+}

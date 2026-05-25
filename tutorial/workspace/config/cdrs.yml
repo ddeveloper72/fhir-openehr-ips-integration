@@ -1,0 +1,7 @@
+- id: local
+  name: EHRbase
+  baseUrl: https://ips.open-fhir.com/ehrbase/rest
+  authMethod: basic
+  basicAuth:
+    username: ehrbase-user
+    password: SuperSecretPassword

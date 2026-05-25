@@ -1,0 +1,47 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import { PatientSearch } from '@/components/patient/PatientSearch';
+import { PatientList } from '@/components/patient/PatientList';
+import { Button } from '@/components/ui/Button';
+import { PlusIcon } from '@heroicons/react/24/outline';
+---
+
+<Layout title="Patients">
+  <Header slot="header" />
+  
+  <div class="container-custom py-8">
+    <div class="flex justify-between items-center mb-6">
+      <div>
+        <h1 class="text-3xl font-bold text-slate-900 mb-2">Patients</h1>
+        <p class="text-slate-600">Search and manage patient records</p>
+      </div>
+      <a href="/patients/new">
+        <Button client:load>
+          <PlusIcon className="w-5 h-5 mr-2" />
+          New Patient
+        </Button>
+      </a>
+    </div>
+
+    <div class="mb-6">
+      <PatientSearch 
+        client:load
+        onResults={(patients) => {
+          // This will trigger a re-render with filtered results
+          const listContainer = document.getElementById('patient-list-container');
+          if (listContainer) {
+            // The list will be re-rendered via React state
+          }
+        }}
+      />
+    </div>
+
+    <div id="patient-list-container">
+      <PatientList client:load />
+    </div>
+  </div>
+
+  <Footer slot="footer" />
+</Layout>

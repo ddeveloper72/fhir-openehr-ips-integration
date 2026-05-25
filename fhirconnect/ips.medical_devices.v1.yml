@@ -1,0 +1,17 @@
+grammar: FHIRConnect/v0.9.0
+type: extension
+metadata:
+  name: IPS_medical_devices
+  version: 0.0.1-alpha
+spec:
+  system: FHIR
+  version: R4
+  extends: EVALUATION.device_summary.v0
+
+mappings:
+  - name: "device"
+    extension: add
+    with:
+      fhir: "$resource.device"
+      openehr: "$archetype/data[at0001]/items[at0022]/items[openEHR-EHR-CLUSTER.device.v1]"
+    slotArchetype: "CLUSTER.device.v1"

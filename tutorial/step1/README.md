@@ -121,4 +121,3 @@ Do note that initial boot of Firely Server takes a while to load all conformance
 an OpeartionOutcome with 423 Locked, feel free to move on to Step 2 and revisit this `assertion` after some time.
 
 Additionally, you're welcome to compare your docker-compose.yml file with [docker-compose.yml](docker-compose.yml).
-

@@ -1,0 +1,110 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+
+const { id } = Astro.params;
+
+// Server-side data fetching
+let patient = null;
+let error = null;
+
+try {
+  const FHIR_API_URL = import.meta.env.PUBLIC_FHIR_API_URL || 'http://localhost:4080';
+  const response = await fetch(`${FHIR_API_URL}/Patient/${id}`, {
+    headers: {
+      'Accept': 'application/fhir+json',
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error(`Failed to fetch patient: ${response.statusText}`);
+  }
+
+  patient = await response.json();
+} catch (err: any) {
+  error = err.message;
+}
+---
+
+<Layout title={patient ? `Patient: ${patient.id}` : 'Patient Details'}>
+  <Header slot="header" />
+  
+  <div class="container-custom py-8">
+    {error ? (
+      <div class="bg-error-50 border border-error-200 rounded-lg p-4 text-error-800">
+        <p class="font-semibold">Error loading patient</p>
+        <p class="text-sm mt-1">{error}</p>
+        <a href="/patients" class="text-error-600 hover:text-error-700 text-sm font-medium mt-3 inline-block">
+          ← Back to patients
+        </a>
+      </div>
+    ) : patient && (
+      <div class="space-y-6">
+        <div class="flex justify-between items-start">
+          <div>
+            <h1 class="text-3xl font-bold text-slate-900 mb-2">
+              {patient.name?.[0]?.given?.join(' ')} {patient.name?.[0]?.family}
+            </h1>
+            <p class="text-slate-600">Patient ID: {patient.id}</p>
+          </div>
+          <a href={`/summary/${id}`}>
+            <button class="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors">
+              View Summary
+            </button>
+          </a>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md border border-slate-200 p-6">
+          <h2 class="text-xl font-semibold text-slate-900 mb-4">Patient Details</h2>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label class="text-sm font-medium text-slate-600">Gender</label>
+              <p class="mt-1 text-slate-900 capitalize">{patient.gender || 'N/A'}</p>
+            </div>
+
+            {patient.birthDate && (
+              <div>
+                <label class="text-sm font-medium text-slate-600">Birth Date</label>
+                <p class="mt-1 text-slate-900">{patient.birthDate}</p>
+              </div>
+            )}
+
+            <div>
+              <label class="text-sm font-medium text-slate-600">Status</label>
+              <p class="mt-1 text-slate-900">{patient.active ? 'Active' : 'Inactive'}</p>
+            </div>
+
+            {patient.identifier && patient.identifier.length > 0 && (
+              <div class="col-span-full">
+                <label class="text-sm font-medium text-slate-600 block mb-2">Identifiers</label>
+                <div class="space-y-2">
+                  {patient.identifier.map((id: any) => (
+                    <div class="bg-slate-50 rounded p-3">
+                      {id.system && (
+                        <p class="text-xs text-slate-600">System: {id.system}</p>
+                      )}
+                      <p class="text-sm font-mono text-slate-900 mt-1">Value: {id.value}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+
+        <div class="flex space-x-4">
+          <a href="/patients" class="text-primary-600 hover:text-primary-700 text-sm font-medium">
+            ← Back to patients
+          </a>
+          <a href={`/bundles/upload?patientId=${id}`} class="text-primary-600 hover:text-primary-700 text-sm font-medium">
+            Upload Bundle for this Patient →
+          </a>
+        </div>
+      </div>
+    )}
+  </div>
+
+  <Footer slot="footer" />
+</Layout>

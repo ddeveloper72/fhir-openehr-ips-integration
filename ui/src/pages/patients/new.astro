@@ -1,0 +1,39 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import { PatientForm } from '@/components/patient/PatientForm';
+import { Card } from '@/components/ui/Card';
+---
+
+<Layout title="Create Patient">
+  <Header slot="header" />
+  
+  <div class="container-custom py-8">
+    <div class="max-w-2xl mx-auto">
+      <div class="mb-6">
+        <h1 class="text-3xl font-bold text-slate-900 mb-2">Create New Patient</h1>
+        <p class="text-slate-600">
+          Create a new patient record in the FHIR facade. This will also provision an EHR in the openEHR CDR.
+        </p>
+      </div>
+
+      <Card>
+        <PatientForm 
+          client:load
+          onSuccess={(patient) => {
+            window.location.href = `/patients/${patient.id}`;
+          }}
+        />
+      </Card>
+
+      <div class="mt-6">
+        <a href="/patients" class="text-primary-600 hover:text-primary-700 text-sm font-medium">
+          ← Back to patients
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <Footer slot="footer" />
+</Layout>

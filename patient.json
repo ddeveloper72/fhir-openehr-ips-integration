@@ -1,0 +1,28 @@
+{
+  "resourceType": "Patient",
+  "id": "d9d699ab-ebb6-4a68-9e73-bf2b33e9ea30",
+  "meta": {
+    "versionId": "326489c1-e7d2-44cd-a14d-3e8633a32c2c",
+    "lastUpdated": "2026-05-14T17:59:55.432+00:00"
+  },
+  "identifier": [
+    {
+      "system": "http://openehr.org/NamingSystem/ehr-id",
+      "value": "d09a9712-0491-4c40-bea2-b81b7da085eb",
+      "assigner": {
+        "display": "local"
+      }
+    }
+  ],
+  "active": true,
+  "name": [
+    {
+      "use": "official",
+      "family": "Duck",
+      "given": [
+        "Donald"
+      ]
+    }
+  ],
+  "gender": "male"
+}

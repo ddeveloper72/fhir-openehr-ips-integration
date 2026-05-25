@@ -1,0 +1,132 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import { Card } from '@/components/ui/Card';
+import { ServerStatusBanner } from '@/components/ui/ServerStatusBanner';
+import { UserPlusIcon, ArrowUpTrayIcon, MagnifyingGlassIcon, DocumentTextIcon } from '@heroicons/react/24/outline';
+---
+
+<Layout title="Dashboard">
+  <Header slot="header" />
+  
+  <div class="container-custom py-8">
+    <!-- Hero Section -->
+    <div class="mb-8">
+      <h1 class="text-3xl font-bold text-slate-900 mb-2">FHIR-openEHR Integration</h1>
+      <p class="text-lg text-slate-600">
+        Seamlessly translate between FHIR International Patient Summary and openEHR Clinical Data Repository
+      </p>
+    </div>
+
+    <!-- Server Status Banner -->
+    <div class="mb-8">
+      <ServerStatusBanner client:load />
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+      <a href="/patients/new" class="group">
+        <Card className="h-full hover:shadow-lg transition-shadow cursor-pointer">
+          <div class="flex flex-col items-center text-center space-y-3">
+            <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center group-hover:bg-primary-200 transition-colors">
+              <UserPlusIcon className="w-8 h-8 text-primary-600" />
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold text-slate-900">Create Patient</h3>
+              <p class="text-sm text-slate-600 mt-1">Add a new patient record</p>
+            </div>
+          </div>
+        </Card>
+      </a>
+
+      <a href="/patients" class="group">
+        <Card className="h-full hover:shadow-lg transition-shadow cursor-pointer">
+          <div class="flex flex-col items-center text-center space-y-3">
+            <div class="w-16 h-16 bg-success-100 rounded-full flex items-center justify-center group-hover:bg-success-200 transition-colors">
+              <MagnifyingGlassIcon className="w-8 h-8 text-success-600" />
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold text-slate-900">Search Patients</h3>
+              <p class="text-sm text-slate-600 mt-1">Find existing patients</p>
+            </div>
+          </div>
+        </Card>
+      </a>
+
+      <a href="/bundles/upload" class="group">
+        <Card className="h-full hover:shadow-lg transition-shadow cursor-pointer">
+          <div class="flex flex-col items-center text-center space-y-3">
+            <div class="w-16 h-16 bg-warning-100 rounded-full flex items-center justify-center group-hover:bg-warning-200 transition-colors">
+              <ArrowUpTrayIcon className="w-8 h-8 text-warning-600" />
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold text-slate-900">Upload Bundle</h3>
+              <p class="text-sm text-slate-600 mt-1">Submit IPS FHIR bundle</p>
+            </div>
+          </div>
+        </Card>
+      </a>
+
+      <a href="https://hl7.org/fhir/uv/ips/" target="_blank" rel="noopener noreferrer" class="group">
+        <Card className="h-full hover:shadow-lg transition-shadow cursor-pointer">
+          <div class="flex flex-col items-center text-center space-y-3">
+            <div class="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center group-hover:bg-slate-200 transition-colors">
+              <DocumentTextIcon className="w-8 h-8 text-slate-600" />
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold text-slate-900">Documentation</h3>
+              <p class="text-sm text-slate-600 mt-1">View IPS specification</p>
+            </div>
+          </div>
+        </Card>
+      </a>
+    </div>
+
+    <!-- Getting Started Guide -->
+    <Card title="Getting Started" subtitle="Quick guide to using this interface">
+      <div class="space-y-4">
+        <div class="flex items-start space-x-3">
+          <div class="flex-shrink-0 w-8 h-8 bg-primary-600 text-white rounded-full flex items-center justify-center font-bold">
+            1
+          </div>
+          <div>
+            <h4 class="font-semibold text-slate-900">Create a Patient</h4>
+            <p class="text-sm text-slate-600 mt-1">
+              Start by creating a new patient record. This will provision an EHR in the openEHR CDR and 
+              return a FHIR Patient resource with an openEHR EHR ID identifier.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex items-start space-x-3">
+          <div class="flex-shrink-0 w-8 h-8 bg-primary-600 text-white rounded-full flex items-center justify-center font-bold">
+            2
+          </div>
+          <div>
+            <h4 class="font-semibold text-slate-900">Upload an IPS Bundle</h4>
+            <p class="text-sm text-slate-600 mt-1">
+              Select a pre-loaded example or upload your own IPS Bundle JSON file. The system will 
+              automatically patch the patient reference and store the data in openEHR format.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex items-start space-x-3">
+          <div class="flex-shrink-0 w-8 h-8 bg-primary-600 text-white rounded-full flex items-center justify-center font-bold">
+            3
+          </div>
+          <div>
+            <h4 class="font-semibold text-slate-900">View Patient Summary</h4>
+            <p class="text-sm text-slate-600 mt-1">
+              Navigate to a patient's details page to fetch and view their IPS summary. The data is 
+              queried from openEHR, mapped back to FHIR, and displayed in organized sections.
+            </p>
+          </div>
+        </div>
+      </div>
+    </Card>
+  </div>
+
+  <Footer slot="footer" />
+</Layout>
