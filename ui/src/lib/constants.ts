@@ -4,6 +4,12 @@ export const APP_VERSION = import.meta.env.PUBLIC_APP_VERSION || '1.0.0';
 
 export const EXAMPLE_FILES = [
   {
+    id: 'john_doe',
+    name: 'John Doe IPS (Step 6)',
+    description: 'Pre-configured for John Doe patient',
+    path: '/examples/john_doe_ips.json'
+  },
+  {
     id: 'evsclient',
     name: 'IPS Example (EVS Client)',
     description: 'Standard IPS example with all sections',

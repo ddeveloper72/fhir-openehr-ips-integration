@@ -8,10 +8,10 @@ import type { ExampleFile } from '@/types/app';
 import type { FHIRBundle } from '@/types/fhir';
 
 interface ExampleSelectorProps {
-  onSelect: (bundle: FHIRBundle, exampleFile: ExampleFile) => void;
+  patientId?: string;
 }
 
-export function ExampleSelector({ onSelect }: ExampleSelectorProps) {
+export function ExampleSelector({ patientId }: ExampleSelectorProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [selectedFile, setSelectedFile] = useState<ExampleFile | null>(null);
@@ -29,7 +29,11 @@ export function ExampleSelector({ onSelect }: ExampleSelectorProps) {
       }
       
       const bundle = await response.json();
-      onSelect(bundle, example);
+      
+      // Dispatch event to parent page
+      window.dispatchEvent(new CustomEvent('bundleSelected', { 
+        detail: { bundle, example, patientId } 
+      }));
     } catch (err: any) {
       setError(err.message || 'Failed to load example file');
     } finally {

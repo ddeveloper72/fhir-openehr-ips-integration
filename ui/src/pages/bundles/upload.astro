@@ -33,12 +33,7 @@ const patientId = url.searchParams.get('patientId');
         <Card title="Option 1: Select Example File">
           <ExampleSelector 
             client:load
-            onSelect={(bundle, example) => {
-              // Trigger bundle preview update
-              window.dispatchEvent(new CustomEvent('bundleSelected', { 
-                detail: { bundle, example, patientId } 
-              }));
-            }}
+            patientId={patientId}
           />
         </Card>
 
@@ -47,11 +42,7 @@ const patientId = url.searchParams.get('patientId');
         <Card title="Option 2: Upload Your Own File">
           <BundleUploader 
             client:load
-            onUpload={(bundle) => {
-              window.dispatchEvent(new CustomEvent('bundleSelected', { 
-                detail: { bundle, patientId } 
-              }));
-            }}
+            patientId={patientId}
           />
         </Card>
 

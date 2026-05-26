@@ -5,10 +5,10 @@ import { Alert } from '@/components/ui/Alert';
 import type { FHIRBundle } from '@/types/fhir';
 
 interface BundleUploaderProps {
-  onUpload: (bundle: FHIRBundle) => void;
+  patientId?: string;
 }
 
-export function BundleUploader({ onUpload }: BundleUploaderProps) {
+export function BundleUploader({ patientId }: BundleUploaderProps) {
   const [error, setError] = React.useState<string | null>(null);
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
@@ -38,7 +38,10 @@ export function BundleUploader({ onUpload }: BundleUploaderProps) {
           return;
         }
         
-        onUpload(bundle);
+        // Dispatch event to parent page
+        window.dispatchEvent(new CustomEvent('bundleSelected', { 
+          detail: { bundle, patientId } 
+        }));
       } catch (err) {
         setError('Failed to parse JSON file');
       }
@@ -49,7 +52,7 @@ export function BundleUploader({ onUpload }: BundleUploaderProps) {
     };
 
     reader.readAsText(file);
-  }, [onUpload]);
+  }, [patientId]);
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
