@@ -112,7 +112,7 @@ This repository adds the following enhancements to the original project:
 
 ```
 Original Work Copyright 2026 openFHIR Contributors
-Enhancements Copyright 2026 Duncan Corder
+Enhancements Copyright 2026 Duncan Falconer
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
