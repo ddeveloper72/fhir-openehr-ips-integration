@@ -2,6 +2,7 @@
 import Layout from '@/layouts/Layout.astro';
 import Header from '@/components/layout/Header.astro';
 import Footer from '@/components/layout/Footer.astro';
+import { ArchitectureDiagram } from '@/components/architecture/ArchitectureDiagram';
 import { PatientSearch } from '@/components/patient/PatientSearch';
 import { PatientList } from '@/components/patient/PatientList';
 import { Button } from '@/components/ui/Button';
@@ -23,6 +24,15 @@ import { PlusIcon } from '@heroicons/react/24/outline';
           New Patient
         </Button>
       </a>
+    </div>
+
+    <!-- Architecture Visualization -->
+    <div class="mb-8">
+      <ArchitectureDiagram 
+        client:load
+        flow="query"
+        autoAnimate={true}
+      />
     </div>
 
     <div class="mb-6">

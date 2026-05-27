@@ -43,6 +43,20 @@ ui/.env.development
 # Docker Volumes and Data
 vonk-imported/
 mongodb-data/
+tutorial/workspace/vonk-imported/
+
+# Temporary Test Files and Development Artifacts
+**/test_summary*.json
+**/final_summary*.json
+**/corrected_summary*.json
+**/success_summary*.json
+**/step*_summary*.json
+**/step*_final.json
+patient.json
+summary.json
+summary_final.json
+commit_commands.txt
+cleanup.ps1
 
 # IDE and Editor Files
 .vscode/

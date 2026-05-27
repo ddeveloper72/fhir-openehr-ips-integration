@@ -50,9 +50,9 @@ mappings:
     manual:
       - name: "mild"
         openehr:
-          - path: "defining_code/terminology_id"
+          - path: "terminology_id/value"
             value: "local"
-          - path: "defining_code/code_string"
+          - path: "code_string"
             value: "at0047"
           - path: "value"
             value: "Mild"
@@ -76,9 +76,9 @@ mappings:
 
       - name: "moderate"
         openehr:
-          - path: "defining_code/terminology_id"
+          - path: "terminology_id/value"
             value: "local"
-          - path: "defining_code/code_string"
+          - path: "code_string"
             value: "at0048"
           - path: "value"
             value: "Moderate"
@@ -102,9 +102,9 @@ mappings:
 
       - name: "severe"
         openehr:
-          - path: "defining_code/terminology_id"
+          - path: "terminology_id/value"
             value: "local"
-          - path: "defining_code/code_string"
+          - path: "code_string"
             value: "at0049"
           - path: "value"
             value: "Severe"

@@ -27,9 +27,9 @@ mappings:
           manual:
             - name: "active"
               openehr:
-                - path: "defining_code/terminology_id"
+                - path: "terminology_id/value"
                   value: "local"
-                - path: "defining_code/code_string"
+                - path: "code_string"
                   value: "at0026"
                 - path: "value"
                   value: "Active"
@@ -53,9 +53,9 @@ mappings:
 
             - name: "inactive"
               openehr:
-                - path: "defining_code/terminology_id"
+                - path: "terminology_id/value"
                   value: "local"
-                - path: "defining_code/code_string"
+                - path: "code_string"
                   value: "at0027"
                 - path: "value"
                   value: "Inactive"
@@ -86,9 +86,9 @@ mappings:
           manual:
             - name: "resolved"
               openehr:
-                - path: "defining_code/terminology_id"
+                - path: "terminology_id/value"
                   value: "local"
-                - path: "defining_code/code_string"
+                - path: "code_string"
                   value: "at0084"
                 - path: "value"
                   value: "Resolved"
@@ -112,9 +112,9 @@ mappings:
 
             - name: "relapsed"
               openehr:
-                - path: "defining_code/terminology_id"
+                - path: "terminology_id/value"
                   value: "local"
-                - path: "defining_code/code_string"
+                - path: "code_string"
                   value: "at0097"
                 - path: "value"
                   value: "relapsed"
@@ -145,9 +145,9 @@ mappings:
           manual:
             - name: "remission"
               openehr:
-                - path: "defining_code/terminology_id"
+                - path: "terminology_id/value"
                   value: "local"
-                - path: "defining_code/code_string"
+                - path: "code_string"
                   value: "at0090"
                 - path: "value"
                   value: "In remission"
@@ -178,9 +178,9 @@ mappings:
           manual:
             - name: "recurrence"
               openehr:
-                - path: "defining_code/terminology_id"
+                - path: "terminology_id/value"
                   value: "local"
-                - path: "defining_code/code_string"
+                - path: "code_string"
                   value: "at0096"
                 - path: "value"
                   value: "Recurrence"

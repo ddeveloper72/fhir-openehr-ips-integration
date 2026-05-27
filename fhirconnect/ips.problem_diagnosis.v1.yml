@@ -24,9 +24,9 @@ mappings:
     manual:
       - name: "confirmed"
         openehr:
-          - path: "defining_code/terminology_id"
+          - path: "terminology_id/value"
             value: "local"
-          - path: "defining_code/code_string"
+          - path: "code_string"
             value: "at0076"
           - path: "value"
             value: "Confirmed"

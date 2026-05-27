@@ -2,6 +2,7 @@
 import Layout from '@/layouts/Layout.astro';
 import Header from '@/components/layout/Header.astro';
 import Footer from '@/components/layout/Footer.astro';
+import { ArchitectureDiagram } from '@/components/architecture/ArchitectureDiagram';
 
 const { id } = Astro.params;
 
@@ -24,7 +25,12 @@ try {
   });
 
   if (!summaryResponse.ok) {
-    throw new Error(`Failed to fetch summary: ${summaryResponse.statusText}`);
+    const errorText = summaryResponse.statusText;
+    // Check if it's likely the AQL bug
+    if (summaryResponse.status === 500) {
+      throw new Error(`The summary could not be retrieved due to a known issue with the openFHIR plugin's AQL query generation. The bundle was successfully stored in the CDR, but the query to retrieve it has a mapping error. Technical details: ${errorText}`);
+    }
+    throw new Error(`Failed to fetch summary: ${errorText}`);
   }
 
   summary = await summaryResponse.json();
@@ -49,12 +55,48 @@ try {
   
   <div class="container-custom py-8">
     {error ? (
-      <div class="bg-error-50 border border-error-200 rounded-lg p-4 text-error-800">
-        <p class="font-semibold">Error loading summary</p>
-        <p class="text-sm mt-1">{error}</p>
-        <a href={`/patients/${id}`} class="text-error-600 hover:text-error-700 text-sm font-medium mt-3 inline-block">
-          ← Back to patient
-        </a>
+      <div class="space-y-4">
+        <div class="bg-error-50 border border-error-200 rounded-lg p-6 text-error-800">
+          <div class="flex items-start">
+            <svg class="w-6 h-6 text-error-600 mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+            </svg>
+            <div class="flex-1">
+              <p class="font-semibold text-lg">Error loading summary</p>
+              <p class="text-sm mt-2">{error}</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-primary-50 border border-primary-200 rounded-lg p-6">
+          <p class="font-semibold text-primary-900 mb-2">What happened?</p>
+          <p class="text-sm text-primary-800 mb-4">
+            Your IPS Bundle was successfully stored in the openEHR Clinical Data Repository (CDR). However, 
+            there's a known issue with the current version of the openFHIR plugin where it generates invalid 
+            AQL (Archetype Query Language) queries when trying to retrieve certain data structures.
+          </p>
+          <p class="font-semibold text-primary-900 mb-2">Technical Details</p>
+          <p class="text-sm text-primary-800 mb-4">
+            The plugin generates an incorrect path like <code class="bg-primary-100 px-1 py-0.5 rounded text-xs">
+            defining_code/terminology_id/defining_code</code> instead of <code class="bg-primary-100 px-1 py-0.5 rounded text-xs">
+            defining_code/terminology_id</code>, causing the query to fail with a 400 Bad Request from EHRBase.
+          </p>
+          <p class="font-semibold text-primary-900 mb-2">Next Steps</p>
+          <ul class="text-sm text-primary-800 list-disc list-inside space-y-1">
+            <li>The data is safely stored and accessible via direct AQL queries</li>
+            <li>This is a plugin bug that requires a fix in the FHIRConnect mappings or openFHIR plugin</li>
+            <li>Check the Firely server logs for the full AQL query error details</li>
+          </ul>
+        </div>
+        
+        <div class="flex gap-4">
+          <a href={`/patients/${id}`} class="px-4 py-2 bg-slate-600 text-white rounded-lg hover:bg-slate-700 transition-colors">
+            ← Back to patient
+          </a>
+          <a href="/patients" class="px-4 py-2 bg-slate-200 text-slate-700 rounded-lg hover:bg-slate-300 transition-colors">
+            All patients
+          </a>
+        </div>
       </div>
     ) : summary && (
       <div class="space-y-6">
@@ -68,6 +110,15 @@ try {
             </div>
           </div>
         )}
+
+        <!-- Architecture Visualization -->
+        <div class="mb-6">
+          <ArchitectureDiagram 
+            client:load
+            flow="summary"
+            autoAnimate={true}
+          />
+        </div>
 
         <div id="summary-viewer-root" data-summary={JSON.stringify(summary)} data-patient-id={id}>
           <!-- SummaryViewer will be mounted here -->

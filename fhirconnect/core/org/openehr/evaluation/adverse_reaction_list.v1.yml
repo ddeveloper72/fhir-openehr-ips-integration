@@ -32,9 +32,9 @@ mappings:
           manual:
             - name: "active"
               openehr:
-                - path: "defining_code/terminology_id"
+                - path: "terminology_id/value"
                   value: "local"
-                - path: "defining_code/code_string"
+                - path: "code_string"
                   value: "at0131"
                 - path: "value"
                   value: "Active"
@@ -58,9 +58,9 @@ mappings:
 
             - name: "inactive"
               openehr:
-                - path: "defining_code/terminology_id"
+                - path: "terminology_id/value"
                   value: "local"
-                - path: "defining_code/code_string"
+                - path: "code_string"
                   value: "at0132"
                 - path: "value"
                   value: "Inactive"
@@ -96,9 +96,9 @@ mappings:
           manual:
             - name: "unconfirmed"
               openehr:
-                - path: "defining_code/terminology_id"
+                - path: "terminology_id/value"
                   value: "local"
-                - path: "defining_code/code_string"
+                - path: "code_string"
                   value: "at0064"
                 - path: "value"
                   value: "Unconfirmed"
@@ -122,9 +122,9 @@ mappings:
 
             - name: "confirmed"
               openehr:
-                - path: "defining_code/terminology_id"
+                - path: "terminology_id/value"
                   value: "local"
-                - path: "defining_code/code_string"
+                - path: "code_string"
                   value: "at0065"
                 - path: "value"
                   value: "Confirmed"
@@ -148,9 +148,9 @@ mappings:
 
             - name: "refuted"
               openehr:
-                - path: "defining_code/terminology_id"
+                - path: "terminology_id/value"
                   value: "local"
-                - path: "defining_code/code_string"
+                - path: "code_string"
                   value: "at0066"
                 - path: "value"
                   value: "Refuted"
@@ -180,9 +180,9 @@ mappings:
     manual:
       - name: "low"
         openehr:
-          - path: "defining_code/terminology_id"
+          - path: "terminology_id/value"
             value: "local"
-          - path: "defining_code/code_string"
+          - path: "code_string"
             value: "at0102"
           - path: "value"
             value: "Low"
@@ -202,9 +202,9 @@ mappings:
 
       - name: "high"
         openehr:
-          - path: "defining_code/terminology_id"
+          - path: "terminology_id/value"
             value: "local"
-          - path: "defining_code/code_string"
+          - path: "code_string"
             value: "at0103"
           - path: "value"
             value: "High"
@@ -224,9 +224,9 @@ mappings:
 
       - name: "indeterminate"
         openehr:
-          - path: "defining_code/terminology_id"
+          - path: "terminology_id/value"
             value: "local"
-          - path: "defining_code/code_string"
+          - path: "code_string"
             value: "at0124"
           - path: "value"
             value: "indeterminate"

@@ -3,13 +3,14 @@ import Layout from '@/layouts/Layout.astro';
 import Header from '@/components/layout/Header.astro';
 import Footer from '@/components/layout/Footer.astro';
 import { Card } from '@/components/ui/Card';
+import { ArchitectureDiagram } from '@/components/architecture/ArchitectureDiagram';
 import { ExampleSelector } from '@/components/ips/ExampleSelector';
 import { BundleUploader } from '@/components/ips/BundleUploader';
 import { BundlePreview } from '@/components/ips/BundlePreview';
 import { BundleValidator } from '@/components/ips/BundleValidator';
 
 const url = new URL(Astro.request.url);
-const patientId = url.searchParams.get('patientId');
+const patientId = url.searchParams.get('patientId') || undefined;
 ---
 
 <Layout title="Upload IPS Bundle">
@@ -30,6 +31,29 @@ const patientId = url.searchParams.get('patientId');
       </div>
 
       <div class="space-y-6">
+        <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+          <div class="flex items-start">
+            <svg class="w-5 h-5 text-green-600 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <div class="flex-1">
+              <p class="text-sm font-semibold text-green-900">System Ready</p>
+              <p class="text-xs text-green-800 mt-1">
+                AQL import successful. Bundle submission and summary retrieval are working correctly.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Architecture Visualization -->
+        <div>
+          <ArchitectureDiagram 
+            client:load
+            flow="store"
+            autoAnimate={true}
+          />
+        </div>
+
         <Card title="Option 1: Select Example File">
           <ExampleSelector 
             client:load

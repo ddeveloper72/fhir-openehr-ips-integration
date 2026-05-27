@@ -1,6 +1,34 @@
-# HL7, openEHR: Converge & Collaborate, Let's Build Session
+# FHIR-openEHR IPS Integration with User Interface
 
-Let's build resources for Converge and Collaborate, Dublin 2026
+> **Enhanced Version** - This project extends the original [openFHIR Converge & Collaborate Dublin 2026](https://github.com/openFHIR/converge-and-collaborate-dublin-hackaton) tutorial with a user-friendly web interface featuring animated architecture visualizations.
+
+## 🎯 What This Project Does
+
+A complete FHIR facade implementation on top of openEHR CDR, demonstrating International Patient Summary (IPS) interoperability. Features include:
+
+- ✅ **FHIR-to-openEHR bidirectional translation** using FHIRConnect mappings
+- ✅ **Interactive Web UI** built with Astro and React
+- ✅ **Animated architecture diagrams** showing real-time data flow
+- ✅ **Patient management** with search and bundle upload
+- ✅ **IPS summary viewer** with structured sections
+- ✅ **Non-technical user friendly** interface
+
+## 🚀 Quick Start
+
+1. Get a [Firely Server trial license](https://fire.ly/firely-server-trial/)
+2. Place `firely-license.json` in the `config/` folder
+3. Run `docker compose up -d`
+4. Access the UI at **http://localhost:3000**
+5. Access FHIR API at **http://localhost:4080**
+
+## 📊 User Interface Features
+
+The web interface provides:
+- **Dashboard**: System overview with animated architecture
+- **Patient Management**: Create, search, and view patients
+- **Bundle Upload**: Submit IPS Bundles with preview and validation
+- **Summary Viewer**: Display patient IPS with sections for allergies, conditions, medications, and devices
+- **Visual Flow Diagrams**: Real-time animated visualizations of FHIR query, store, and summary operations
 
 ## Lets Build: openEHR-to-FHIR IPS Integration
 
@@ -55,3 +83,56 @@ tutorial/step*/     — Step-by-step instructions, docker-compose.yml, and confi
 - [openFHIR Enterprise documentation](https://open-fhir.com/documentation/2.2.0/installation.html)
 - [FHIRConnect specification](https://github.com/SevKohler/FHIRconnect-spec)
 - [IPS Implementation Guide](https://hl7.org/fhir/uv/ips/)
+
+---
+
+## 📜 License & Attribution
+
+This project is licensed under the **Apache License 2.0** - see the [LICENSE](LICENSE) file for details.
+
+### Original Work
+
+This is a derivative work based on the [openFHIR Converge & Collaborate Dublin Hackathon 2026](https://github.com/openFHIR/converge-and-collaborate-dublin-hackaton) tutorial project, originally created by the openFHIR team.
+
+**Original Repository**: https://github.com/openFHIR/converge-and-collaborate-dublin-hackaton
+
+### Enhancements in This Fork
+
+This repository adds the following enhancements to the original project:
+
+- **Web User Interface**: Complete Astro-based UI with React components
+- **Animated Architecture Diagrams**: SVG visualizations showing FHIR-to-openEHR data flows
+- **Patient Management UI**: Create, search, and view patients through a web interface
+- **Bundle Upload Interface**: Drag-and-drop IPS Bundle submission with preview
+- **IPS Summary Viewer**: Structured display of patient summaries with collapsible sections
+- **Security Enhancements**: Rate limiting, input validation, and secure file handling
+- **Docker Integration**: Seamless deployment of the entire stack including UI
+
+### Copyright Notice
+
+```
+Original Work Copyright 2026 openFHIR Contributors
+Enhancements Copyright 2026 Duncan Corder
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+```
+
+---
+
+## 🙏 Acknowledgments
+
+- **openFHIR Team** for the original integration tutorial and FHIRConnect mappings
+- **Firely** for the FHIR Server and plugin architecture
+- **HL7 International** for the IPS specification
+- **openEHR Foundation** for the openEHR specifications and EHRBase CDR
+- **Converge & Collaborate Dublin 2026** conference for inspiring this work

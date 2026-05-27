@@ -4,6 +4,7 @@ import Header from '@/components/layout/Header.astro';
 import Footer from '@/components/layout/Footer.astro';
 import { Card } from '@/components/ui/Card';
 import { ServerStatusBanner } from '@/components/ui/ServerStatusBanner';
+import { ArchitectureDiagram } from '@/components/architecture/ArchitectureDiagram';
 import { UserPlusIcon, ArrowUpTrayIcon, MagnifyingGlassIcon, DocumentTextIcon } from '@heroicons/react/24/outline';
 ---
 
@@ -81,6 +82,17 @@ import { UserPlusIcon, ArrowUpTrayIcon, MagnifyingGlassIcon, DocumentTextIcon } 
           </div>
         </Card>
       </a>
+    </div>
+
+    <!-- System Architecture -->
+    <div class="mb-12">
+      <ArchitectureDiagram 
+        client:load
+        flow="idle"
+        title="System Architecture"
+        description="Real-time visualization of FHIR-to-openEHR translation flow"
+        autoAnimate={false}
+      />
     </div>
 
     <!-- Getting Started Guide -->
